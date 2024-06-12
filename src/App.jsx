@@ -68,7 +68,7 @@ function App() {
         <h1
           style={{
             color: "gray",
-            fontFamily: "-moz-initial",
+            fontFamily: "fantasy",
             fontWeight: "bolder",
           }}
         >
