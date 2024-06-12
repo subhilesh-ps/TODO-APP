@@ -62,11 +62,19 @@ function App() {
   };
 
   return (
-    <Container>
+    <Container className="main">
       <div className="header">
         <img src={logo} alt="" style={{ width: "10rem" }} />
-        <h1>TO Do </h1>
-        <p style={{ color: " #7bafdc" }}>Remind Me Every Thing's</p>
+        <h1
+          style={{
+            color: "gray",
+            fontFamily: "-moz-initial",
+            fontWeight: "bolder",
+          }}
+        >
+          TO Do{" "}
+        </h1>
+        <p style={{ color: " gray" }}>Remind Me Every Thing's</p>
       </div>
       <input
         className="input"
@@ -75,30 +83,36 @@ function App() {
         value={inputValue.task}
         onChange={handleChange}
       />
-      <Button variant="outline-success" onClick={handleClick}>
+      <Button variant="outline-success" onClick={handleClick} className="btn">
         {isEditing ? "Update" : "Submit"}
       </Button>
 
-      <Button variant="outline-danger" onClick={handleClear}>
+      <Button variant="outline-danger" onClick={handleClear} className="btn">
         Clear
       </Button>
-      <h4>Todo List </h4>
+      <h4 style={{ color: "gray", marginBottom: "15px" }}>Todo List </h4>
       <div className="footer-box">
         {inputArray.map((item) => (
           <div className="footer" key={item.id}>
-            <h3 style={{ paddingRight: "100px" }}>{item.task}</h3>
+            <h5 style={{ paddingRight: "100px", color: "white" }}>
+              {item.task}
+            </h5>
+            <div className="d-flex gap-3">
+              <FaEdit
+                onClick={() => handleEdit(item.id)}
+                style={{ fontSize: "25px", color: "#19824c" }}
+              />
 
-            <FaEdit
-              onClick={() => handleEdit(item.id)}
-              style={{ fontSize: "25px" }}
-            />
-
-            <IoIosTrash
-              style={{ fontSize: "30px" }}
-              onClick={() => {
-                handleDelete(item.id);
-              }}
-            />
+              <IoIosTrash
+                style={{
+                  fontSize: "30px",
+                  color: "#bd2930",
+                }}
+                onClick={() => {
+                  handleDelete(item.id);
+                }}
+              />
+            </div>
           </div>
         ))}
       </div>
